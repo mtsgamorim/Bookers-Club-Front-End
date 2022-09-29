@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 
-export default function Login() {
+export default function LoginPage() {
   const navigate = useNavigate();
 
   function redirect() {
