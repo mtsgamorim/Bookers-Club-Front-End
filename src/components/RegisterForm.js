@@ -49,7 +49,7 @@ export default function RegisterForm() {
           onChange={(e) => setImage(e.target.value)}
         />
         <input
-          placeholder="E-Mail"
+          placeholder="E-mail"
           type="email"
           value={email}
           required

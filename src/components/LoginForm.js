@@ -30,7 +30,7 @@ export default function LoginForm() {
     <Container>
       <form onSubmit={login}>
         <input
-          placeholder="E-Mail"
+          placeholder="E-mail"
           type="email"
           value={email}
           required

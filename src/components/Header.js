@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <Container>
       <h1>Logo</h1>
-      <span>Bem vindo fulano!</span>
+      <span>Bem vindo(a), fulano!</span>
     </Container>
   );
 }
