@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
-import logo from "../assets/images/bookers_club.png";
 
 export default function Header() {
   const { name } = useContext(UserContext);

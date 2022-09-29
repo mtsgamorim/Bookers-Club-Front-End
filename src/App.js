@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import UserContext from "./context/UserContext";
+import BookFinderPage from "./pages/BookFinderPage";
 
 function App() {
   const [token, setToken] = useState("");
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/bookfinder" element={<BookFinderPage />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
