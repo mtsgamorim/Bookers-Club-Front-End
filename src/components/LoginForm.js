@@ -11,8 +11,15 @@ export default function LoginForm() {
 
   function login(event) {
     event.preventDefault();
+    const data = {
+      email,
+      password,
+    };
 
-    const promise = axios.post("https://bookers-club.herokuapp.com/sign-in");
+    const promise = axios.post(
+      "https://bookers-club.herokuapp.com/sign-in",
+      data
+    );
 
     promise.then((res) => {
       navigate("/home");
