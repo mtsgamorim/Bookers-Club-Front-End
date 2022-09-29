@@ -1,11 +1,14 @@
 import axios from "axios";
 import styled from "styled-components";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setToken, setImage, setName } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -18,6 +21,10 @@ export default function LoginForm() {
     });
 
     promise.then((res) => {
+      setToken(res.data.token);
+      setImage(res.data.image);
+      setName(res.data.name);
+
       navigate("/home");
     });
 

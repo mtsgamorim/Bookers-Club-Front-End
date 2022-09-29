@@ -3,16 +3,30 @@ import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
+import UserContext from "./context/UserContext";
 
 function App() {
+  const [token, setToken] = useState("");
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const contextValue = {
+    token,
+    setToken,
+    image,
+    setImage,
+    name,
+    setName,
+  };
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
+    <UserContext.Provider value={contextValue}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 
