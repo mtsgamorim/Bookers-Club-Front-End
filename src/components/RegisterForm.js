@@ -13,17 +13,13 @@ export default function RegisterForm() {
 
   function register(event) {
     event.preventDefault();
-    const data = {
+
+    const promise = axios.post("https://bookers-club.herokuapp.com/sign-up", {
       email,
       password,
-      image,
       name,
-    };
-
-    const promise = axios.post(
-      "https://bookers-club.herokuapp.com/sign-up",
-      data
-    );
+      image,
+    });
 
     promise.then((res) => {
       navigate("/");
