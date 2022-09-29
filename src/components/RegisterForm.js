@@ -26,7 +26,7 @@ export default function RegisterForm() {
     });
 
     promise.catch((err) => {
-      alert("DADOS PASSADOS INCORRETOS");
+      alert("E-mail ja cadastrado");
     });
   }
 
@@ -37,6 +37,7 @@ export default function RegisterForm() {
           placeholder="Primeiro Nome"
           type="text"
           value={name}
+          maxlength="18"
           required
           onChange={(e) => setName(e.target.value)}
         />
@@ -86,6 +87,7 @@ const Container = styled.div`
     ::placeholder {
       font-size: 20px;
       font-weight: 400;
+      font-family: "Josefin Slab", serif;
     }
   }
   button {
@@ -93,7 +95,7 @@ const Container = styled.div`
     height: 46px;
     border-radius: 5px;
     border: 0px;
-    background-color: purple;
+    background-color: #006494;
     margin-bottom: 10px;
     cursor: pointer;
     :hover {
@@ -102,6 +104,8 @@ const Container = styled.div`
     span {
       font-size: 20px;
       font-weight: 700;
+      color: #e6d64b;
+      font-family: "Josefin Slab", serif;
     }
   }
 `;

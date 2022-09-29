@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
+import logo from "../assets/images/bookers_club.png";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function LoginPage() {
   return (
     <Container>
       <Content>
-        <h1>LOGO</h1>
+        <img src={logo} />
         <LoginForm />
         <div onClick={redirect}>
           <p>Ainda não possui conta? Cadastre-se</p>
@@ -35,11 +36,16 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 200px;
+  img {
+    width: 280px;
+    height: 280px;
+  }
   div {
     cursor: pointer;
     p {
       font-size: 15px;
-      color: green;
+      color: #e6d64b;
       :hover {
         opacity: 0.7;
       }
