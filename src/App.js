@@ -26,6 +26,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/bookfinder" element={<BookFinderPage />} />
+          <Route path="/book/:id" element={<></>} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
