@@ -95,7 +95,7 @@ const Border = styled.div`
   height: 80vh;
   margin-top: 40px;
   width: 2px;
-  background-color: black;
+  background-color: #e6d64b;
 `;
 
 const Info = styled.div`

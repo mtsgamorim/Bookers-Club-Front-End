@@ -31,6 +31,7 @@ const Book = styled.div`
   border-radius: 12px;
   margin-right: 10px;
   margin-bottom: 20px;
+  background-color: rgba(14, 30, 60);
   cursor: pointer;
 
   div {
