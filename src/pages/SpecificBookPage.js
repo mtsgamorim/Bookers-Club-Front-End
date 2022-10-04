@@ -52,7 +52,10 @@ export default function SpecificBookPage() {
         </BookInfo>
         <RightSide>
           <h1>Sinopse:</h1>
-          <p>{undefined !== book ? book.volumeInfo.description : <></>}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}
+            style={styleHTML}
+          ></div>
           <h2>Area de review: </h2>
           <h3>
             Você precisa ter lido este livro para fazer um review, caso já tenha
@@ -102,13 +105,6 @@ const RightSide = styled.div`
     color: #e6d64b;
     font-weight: 400;
     margin-top: 20px;
-  }
-
-  p {
-    font-size: 22px;
-    color: #e6d64b;
-    font-weight: 400;
-    margin-top: 12px;
   }
 `;
 
@@ -166,3 +162,7 @@ const BookInfo = styled.div`
     }
   }
 `;
+
+const styleHTML = {
+  color: "#e6d64b",
+};
