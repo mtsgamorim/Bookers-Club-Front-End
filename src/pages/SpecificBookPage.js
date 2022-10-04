@@ -7,6 +7,7 @@ import Header from "../components/Header";
 export default function SpecificBookPage() {
   const { id } = useParams();
   const [book, setBook] = useState(undefined);
+  const [defaultImage, setDefaultImage] = useState(false);
 
   useEffect(() => {
     const promise = axios.get(
@@ -14,12 +15,15 @@ export default function SpecificBookPage() {
     );
     promise.then((res) => {
       setBook(res.data);
-      console.log(res.data);
     });
     promise.catch((err) => {
       console.log("Erro");
     });
   }, []);
+
+  function errorImage() {
+    setDefaultImage(true);
+  }
 
   if (book === undefined) {
     return <></>;
@@ -33,15 +37,21 @@ export default function SpecificBookPage() {
           <h1>
             {undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}
           </h1>
-          <img
-            src={
-              undefined !== book.volumeInfo.imageLinks ? (
-                book.volumeInfo.imageLinks.thumbnail
-              ) : (
-                <span>Carregando</span>
-              )
-            }
-          />
+          {defaultImage === false ? (
+            <img
+              src={
+                undefined !== book.volumeInfo.imageLinks ? (
+                  book.volumeInfo.imageLinks.thumbnail
+                ) : (
+                  <span>Carregando</span>
+                )
+              }
+              onError={errorImage}
+            />
+          ) : (
+            <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+          )}
+
           <h2>
             Author: {undefined !== book ? book.volumeInfo.authors[0] : <></>}
           </h2>
@@ -110,7 +120,7 @@ const RightSide = styled.div`
 
 const BookInfo = styled.div`
   width: 20%;
-  height: 400px;
+  height: 460px;
   display: flex;
   align-items: center;
   justify-content: center;

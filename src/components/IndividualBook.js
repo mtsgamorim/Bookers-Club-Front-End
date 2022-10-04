@@ -5,9 +5,14 @@ import axios from "axios";
 
 export default function IndividualBook({ id, name, image }) {
   const navigate = useNavigate();
+  const [defaultImage, setDefaultImage] = useState(false);
 
   function navigateToBookPage(id) {
     navigate(`/book/${id}`);
+  }
+
+  function errorImage() {
+    setDefaultImage(true);
   }
 
   return (
@@ -15,9 +20,14 @@ export default function IndividualBook({ id, name, image }) {
       <div>
         <h1>{name}</h1>
       </div>
-      <img
-        src={undefined !== image ? image.thumbnail : <span>Carregando</span>}
-      />
+      {defaultImage === false ? (
+        <img
+          src={undefined !== image ? image.thumbnail : <span>Carregando</span>}
+          onError={errorImage}
+        />
+      ) : (
+        <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+      )}
     </Book>
   );
 }
