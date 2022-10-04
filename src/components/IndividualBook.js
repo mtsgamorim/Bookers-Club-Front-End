@@ -11,7 +11,7 @@ export default function IndividualBook({ id, name, image }) {
   }
 
   return (
-    <Book>
+    <Book onClick={() => navigateToBookPage(id)}>
       <div>
         <h1>{name}</h1>
       </div>
@@ -31,6 +31,7 @@ const Book = styled.div`
   border-radius: 12px;
   margin-right: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
 
   div {
     width: 70%;
