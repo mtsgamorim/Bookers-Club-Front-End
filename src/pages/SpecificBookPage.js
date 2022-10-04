@@ -53,7 +53,7 @@ export default function SpecificBookPage() {
           )}
 
           <h2>
-            Author: {undefined !== book ? book.volumeInfo.authors[0] : <></>}
+            Autor(a): {undefined !== book ? book.volumeInfo.authors[0] : <></>}
           </h2>
           <h3>Você ja leu esse livro?</h3>
           <button>
@@ -66,7 +66,7 @@ export default function SpecificBookPage() {
             dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}
             style={styleHTML}
           ></div>
-          <h2>Area de review: </h2>
+          <h2>Área de review: </h2>
           <h3>
             Você precisa ter lido este livro para fazer um review, caso já tenha
             lido, clique no botão ao lado!

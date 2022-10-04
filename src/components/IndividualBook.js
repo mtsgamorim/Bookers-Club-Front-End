@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 
 export default function IndividualBook({ id, name, image }) {
   const navigate = useNavigate();
