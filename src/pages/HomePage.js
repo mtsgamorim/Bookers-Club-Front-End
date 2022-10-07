@@ -1,12 +1,30 @@
 import Header from "../components/Header";
+import axios from "axios";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import IndividualBookHome from "../components/IndividualBookHome";
 
 export default function HomePage() {
-  const { image, name } = useContext(UserContext);
+  const { image, name, token } = useContext(UserContext);
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate();
+
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
+  useEffect(() => {
+    const promise = axios.get(
+      "https://bookers-club.herokuapp.com/book",
+      config
+    );
+    promise.then((res) => {
+      setBooks(res.data);
+    });
+    promise.catch((err) => {
+      console.log("Erro na requisição com a API");
+    });
+  }, []);
 
   function redirect() {
     navigate("/bookfinder");
@@ -26,12 +44,20 @@ export default function HomePage() {
           </button>
         </Profile>
         <Border></Border>
-        <Info>
+        <RightSide>
           <Title>
             <h1>Livros lidos até hoje:</h1>
           </Title>
-          <h2>Você ainda não marcou nenhum livro em nossa página 😔​</h2>
-        </Info>
+          <Info>
+            {books.length > 0 ? (
+              books.map((book, index) => (
+                <IndividualBookHome key={index} id={book.bookId} />
+              ))
+            ) : (
+              <h2>Você ainda não marcou nenhum livro em nossa página 😔​</h2>
+            )}
+          </Info>
+        </RightSide>
       </Content>
     </Container>
   );
@@ -100,25 +126,37 @@ const Border = styled.div`
 
 const Info = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 75%;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 10px;
+
+  h2 {
+    font-size: 20px;
+    color: #e6d64b;
+    margin-top: 40px;
+  }
+`;
+
+const Title = styled.div`
   h1 {
     font-size: 30px;
     color: #e6d64b;
     margin-top: 40px;
     font-weight: 700;
-  }
-  h2 {
-    font-size: 20px;
-    color: #e6d64b;
-    margin-top: 40px;
+    width: 300px;
     margin-left: 40px;
   }
 `;
 
-const Title = styled.div`
+const BookArea = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 75%;
 `;

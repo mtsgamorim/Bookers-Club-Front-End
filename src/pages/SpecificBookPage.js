@@ -10,6 +10,7 @@ export default function SpecificBookPage() {
   const { token } = useContext(UserContext);
   const [book, setBook] = useState(undefined);
   const [idInDb, setIdInDb] = useState(null);
+  const [review, setReview] = useState("");
   const [defaultImage, setDefaultImage] = useState(false);
 
   const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -75,6 +76,23 @@ export default function SpecificBookPage() {
     });
   }
 
+  function createReview(event) {
+    event.preventDefault();
+    const data = { review: review };
+    const promise = axios.patch(
+      `https://bookers-club.herokuapp.com/book/${idInDb}`,
+      data,
+      config
+    );
+    promise.then(() => {
+      alert("Review cadastrado!");
+      setReview("");
+    });
+    promise.catch((err) => {
+      console.log(err);
+    });
+  }
+
   if (book === undefined) {
     return <></>;
   }
@@ -128,10 +146,29 @@ export default function SpecificBookPage() {
             style={styleHTML}
           ></div>
           <h2>Área de review: </h2>
-          <h3>
-            Você precisa ter lido este livro para fazer um review, caso já tenha
-            lido, clique no botão ao lado!
-          </h3>
+          {idInDb ? (
+            <ReviewArea>
+              <form onSubmit={createReview}>
+                <textarea
+                  rows="8"
+                  placeholder="Digite sua review! Sem Spoilers!!!"
+                  type="text"
+                  value={review}
+                  required
+                  maxLength="1000"
+                  onChange={(e) => setReview(e.target.value)}
+                />
+                <button type="submit">
+                  <span>Cadastrar Review</span>
+                </button>
+              </form>
+            </ReviewArea>
+          ) : (
+            <h3>
+              Você precisa ter lido este livro para fazer um review, caso já
+              tenha lido, clique no botão ao lado!
+            </h3>
+          )}
         </RightSide>
       </Content>
     </Container>
@@ -249,3 +286,29 @@ const Blue = styled.div`
 const styleHTML = {
   color: "#e6d64b",
 };
+
+const ReviewArea = styled.div`
+  width: 100%;
+  textarea {
+    width: 80%;
+    margin-top: 10px;
+  }
+  button {
+    width: 326px;
+    height: 46px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #006494;
+    margin-bottom: 10px;
+    cursor: pointer;
+    :hover {
+      opacity: 0.7;
+    }
+    span {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e6d64b;
+      font-family: "Josefin Slab", serif;
+    }
+  }
+`;
