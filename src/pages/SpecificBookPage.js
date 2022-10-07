@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import UserContext from "../context/UserContext";
 import axios from "axios";
 import styled from "styled-components";
 import Header from "../components/Header";
 
 export default function SpecificBookPage() {
   const { id } = useParams();
+  const { token } = useContext(UserContext);
   const [book, setBook] = useState(undefined);
+  const [idInDb, setIdInDb] = useState(null);
   const [defaultImage, setDefaultImage] = useState(false);
+
+  const config = { headers: { Authorization: `Bearer ${token}` } };
 
   useEffect(() => {
     const promise = axios.get(
@@ -19,10 +24,55 @@ export default function SpecificBookPage() {
     promise.catch((err) => {
       console.log("Erro");
     });
+
+    const promise2 = axios.get(
+      `https://bookers-club.herokuapp.com/book/${id}`,
+      config
+    );
+    promise2.then((res) => {
+      setIdInDb(res.data.id);
+    });
+
+    promise2.catch((err) => {
+      console.log("Erro na requisição com a API");
+    });
   }, []);
 
   function errorImage() {
     setDefaultImage(true);
+  }
+
+  function createBook() {
+    const data = {
+      bookId: id,
+      title: book.volumeInfo.title,
+      image: book.volumeInfo.imageLinks.thumbnail,
+    };
+    const promise = axios.post(
+      "https://bookers-club.herokuapp.com/book",
+      data,
+      config
+    );
+
+    promise.then((res) => {
+      setIdInDb(res.data.id);
+    });
+    promise.catch((err) => {
+      console.log("Erro na requisição com a API");
+    });
+  }
+
+  function deleteBook() {
+    const promise = axios.delete(
+      `https://bookers-club.herokuapp.com/book/${idInDb}`,
+      config
+    );
+    promise.then((res) => {
+      setIdInDb(null);
+    });
+    promise.catch((err) => {
+      console.log("Erro na requisição com a API");
+    });
   }
 
   if (book === undefined) {
@@ -55,10 +105,21 @@ export default function SpecificBookPage() {
           <h2>
             Autor(a): {undefined !== book ? book.volumeInfo.authors[0] : <></>}
           </h2>
-          <h3>Você ja leu esse livro?</h3>
-          <button>
-            <p>Clique Aqui</p>
-          </button>
+          {idInDb ? (
+            <Red>
+              <h3>Desmarcar livro?</h3>{" "}
+              <button onClick={deleteBook}>
+                <p>Clique Aqui</p>
+              </button>{" "}
+            </Red>
+          ) : (
+            <Blue>
+              <h3>Você ja leu esse livro?</h3>
+              <button onClick={createBook}>
+                <p>Clique Aqui</p>
+              </button>
+            </Blue>
+          )}
         </BookInfo>
         <RightSide>
           <h1>Sinopse:</h1>
@@ -170,6 +231,18 @@ const BookInfo = styled.div`
       color: #e6d64b;
       font-family: "Josefin Slab", serif;
     }
+  }
+`;
+
+const Red = styled.div`
+  button {
+    background-color: red;
+  }
+`;
+
+const Blue = styled.div`
+  button {
+    background-color: #006494;
   }
 `;
 
