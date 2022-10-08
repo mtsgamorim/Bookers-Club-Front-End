@@ -47,7 +47,6 @@ export default function SpecificBookPage() {
     const data = {
       bookId: id,
       title: book.volumeInfo.title,
-      image: book.volumeInfo.imageLinks.thumbnail,
     };
     const promise = axios.post(
       "https://bookers-club.herokuapp.com/book",

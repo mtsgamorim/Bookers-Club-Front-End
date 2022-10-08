@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import UserContext from "./context/UserContext";
 import BookFinderPage from "./pages/BookFinderPage";
 import SpecificBookPage from "./pages/SpecificBookPage";
+import ReviewsPage from "./pages/ReviewsPage";
 
 function App() {
   const [token, setToken] = useState("");
@@ -28,6 +29,7 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/bookfinder" element={<BookFinderPage />} />
           <Route path="/book/:id" element={<SpecificBookPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

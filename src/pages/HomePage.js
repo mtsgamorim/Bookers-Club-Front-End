@@ -26,8 +26,12 @@ export default function HomePage() {
     });
   }, []);
 
-  function redirect() {
+  function redirectToBookFinder() {
     navigate("/bookfinder");
+  }
+
+  function redirectToReview() {
+    navigate("/reviews");
   }
 
   return (
@@ -37,9 +41,13 @@ export default function HomePage() {
         <Profile>
           <img src={image} />
           <span>Nome: {name}</span>
-          <span>Livros lidos: x</span>
+          <span>Livros lidos: {books.length}</span>
           <h1>Deseja adicionar mais livros?</h1>
-          <button onClick={redirect}>
+          <button onClick={redirectToBookFinder}>
+            <p>Clique Aqui</p>
+          </button>
+          <h2>Deseja ver as reviews de livros de outros úsuarios?</h2>
+          <button onClick={redirectToReview}>
             <p>Clique Aqui</p>
           </button>
         </Profile>
@@ -75,7 +83,7 @@ const Profile = styled.div`
   align-items: center;
   justify-content: center;
   width: 25%;
-  height: 400px;
+  height: 700px;
   margin-top: 40px;
   margin-left: 10px;
 
@@ -95,6 +103,12 @@ const Profile = styled.div`
     font-size: 30px;
     color: #e6d64b;
     margin-top: 60px;
+  }
+
+  h2 {
+    font-size: 22px;
+    color: #e6d64b;
+    margin-top: 30px;
   }
 
   button {

@@ -16,7 +16,6 @@ export default function BookFinderPage() {
     );
     promise.then((res) => {
       setBooks(res.data.items);
-      console.log(res.data.items);
     });
     promise.catch((err) => {
       console.log("Erro");
