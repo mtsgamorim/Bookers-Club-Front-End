@@ -42,96 +42,77 @@ export default function IndividualBookReviews({
   }
 
   return (
-    <Page>
-      <Container>
-        <LeftSide>
-          <img src={userImage} />
-          <h1>Usúario(a): {userName}</h1>
-        </LeftSide>
-        <Content>
-          <h1>
-            {undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}
-          </h1>
-          <div>
-            <p>{review}</p>
-          </div>
-        </Content>
-        <ImageBook onClick={redirect}>
-          {defaultImage === false ? (
-            <img
-              src={
-                undefined !== book.volumeInfo.imageLinks ? (
-                  book.volumeInfo.imageLinks.thumbnail
-                ) : (
-                  <span>Carregando</span>
-                )
-              }
-              onError={errorImage}
-            />
-          ) : (
-            <></>
-          )}
-        </ImageBook>
-      </Container>
-    </Page>
+    <Container>
+      <LeftSide>
+        <img src={userImage} />
+        <h1>Usúario(a): {userName}</h1>
+      </LeftSide>
+      <Review>
+        <h1>{undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}</h1>
+        <p>{review}</p>
+      </Review>
+      <RightSide>
+        {defaultImage === false ? (
+          <img
+            src={
+              undefined !== book.volumeInfo.imageLinks ? (
+                book.volumeInfo.imageLinks.thumbnail
+              ) : (
+                <span>Carregando</span>
+              )
+            }
+            onError={errorImage}
+          />
+        ) : (
+          <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+        )}
+      </RightSide>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  width: 90%;
   display: flex;
-  padding-right: 20px;
-  padding-left: 10px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 20px;
 `;
 
 const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  margin-left: 5px;
+  width: 15%;
   img {
     width: 180px;
-    height: auto;
+    height: 180px;
   }
 `;
 
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin-left: 20px;
-
-  div {
-    width: 99%;
-  }
+const Review = styled.div`
+  width: 65%;
+  word-break: break-word;
   h1 {
-    font-size: 24px;
+    font-size: 30px;
     color: #e6d64b;
     font-weight: 700;
   }
   p {
-    font-size: 24px;
+    font-size: 22px;
     color: #e6d64b;
-    margin-top: 10px;
+    font-weight: 400;
+    margin-top: 16px;
   }
 `;
 
-const ImageBook = styled.div`
-  margin-left: 10px;
-  width: 10%;
+const RightSide = styled.div`
+  width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-`;
-
-const Page = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  img {
+    width: 160px;
+    height: 240px;
+  }
 `;
