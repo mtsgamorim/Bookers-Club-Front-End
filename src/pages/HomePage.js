@@ -156,6 +156,10 @@ const Info = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  @media (max-width: 800px) {
+    width: 100%;
+    align-items: center;
+  }
 
   h2 {
     font-size: 20px;
