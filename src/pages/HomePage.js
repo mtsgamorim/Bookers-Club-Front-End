@@ -75,6 +75,10 @@ const Container = styled.div``;
 
 const Content = styled.div`
   display: flex;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Profile = styled.div`
@@ -86,6 +90,9 @@ const Profile = styled.div`
   height: 700px;
   margin-top: 40px;
   margin-left: 10px;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 
   img {
     width: 130px;
@@ -136,6 +143,10 @@ const Border = styled.div`
   margin-top: 40px;
   width: 2px;
   background-color: #e6d64b;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const Info = styled.div`

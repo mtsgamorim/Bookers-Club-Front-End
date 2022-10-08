@@ -42,7 +42,7 @@ export default function IndividualBookReviews({
   }
 
   return (
-    <Container>
+    <Container onClick={redirect}>
       <LeftSide>
         <img src={userImage} />
         <h1>Usúario(a): {userName}</h1>
@@ -51,7 +51,7 @@ export default function IndividualBookReviews({
         <h1>{undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}</h1>
         <p>{review}</p>
       </Review>
-      <RightSide onClick={redirect}>
+      <RightSide>
         {defaultImage === false ? (
           <img
             src={
@@ -73,6 +73,7 @@ export default function IndividualBookReviews({
 
 const Container = styled.div`
   display: flex;
+  cursor: pointer;
   justify-content: space-between;
   width: 90%;
   margin-left: auto;
@@ -81,11 +82,23 @@ const Container = styled.div`
   border: 1px solid black;
   border-radius: 12px;
   padding: 20px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 const LeftSide = styled.div`
   width: 15%;
   word-break: break-word;
+  @media (max-width: 800px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   img {
     width: 180px;
     height: 180px;
@@ -95,6 +108,9 @@ const LeftSide = styled.div`
 const Review = styled.div`
   width: 50%;
   word-break: break-word;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
   h1 {
     font-size: 30px;
     color: #e6d64b;
@@ -113,6 +129,9 @@ const RightSide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 800px) {
+    display: none;
+  }
   img {
     width: 160px;
     height: 240px;

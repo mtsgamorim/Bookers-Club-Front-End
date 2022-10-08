@@ -163,10 +163,7 @@ export default function SpecificBookPage() {
               </form>
             </ReviewArea>
           ) : (
-            <h3>
-              Você precisa ter lido este livro para fazer um review, caso já
-              tenha lido, clique no botão ao lado!
-            </h3>
+            <h3>Você precisa ter lido este livro para fazer um review!</h3>
           )}
         </RightSide>
       </Content>
@@ -181,6 +178,10 @@ const Content = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const RightSide = styled.div`
@@ -190,6 +191,9 @@ const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 70px;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 
   h1 {
     font-size: 30px;
@@ -212,6 +216,7 @@ const RightSide = styled.div`
     color: #e6d64b;
     font-weight: 400;
     margin-top: 20px;
+    margin-bottom: 40px;
   }
 `;
 
@@ -223,6 +228,10 @@ const BookInfo = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 40px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 
   h1 {
     font-size: 26px;
@@ -291,6 +300,9 @@ const ReviewArea = styled.div`
   textarea {
     width: 80%;
     margin-top: 10px;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
   }
   button {
     width: 326px;
@@ -299,6 +311,7 @@ const ReviewArea = styled.div`
     border: 0px;
     background-color: #006494;
     margin-bottom: 10px;
+    margin-top: 10px;
     cursor: pointer;
     :hover {
       opacity: 0.7;
