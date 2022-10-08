@@ -84,6 +84,7 @@ const Container = styled.div`
 
 const LeftSide = styled.div`
   width: 15%;
+  word-break: break-word;
   img {
     width: 180px;
     height: 180px;
