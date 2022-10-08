@@ -42,42 +42,44 @@ export default function IndividualBookReviews({
   }
 
   return (
-    <Container>
-      <LeftSide>
-        <img src={userImage} />
-        <h1>Usúario(a): {userName}</h1>
-      </LeftSide>
-      <Content>
-        <h1>{undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}</h1>
-        <div>
-          <p>{review}</p>
-        </div>
-      </Content>
-      <ImageBook onClick={redirect}>
-        {defaultImage === false ? (
-          <img
-            src={
-              undefined !== book.volumeInfo.imageLinks ? (
-                book.volumeInfo.imageLinks.thumbnail
-              ) : (
-                <span>Carregando</span>
-              )
-            }
-            onError={errorImage}
-          />
-        ) : (
-          <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
-        )}
-      </ImageBook>
-    </Container>
+    <Page>
+      <Container>
+        <LeftSide>
+          <img src={userImage} />
+          <h1>Usúario(a): {userName}</h1>
+        </LeftSide>
+        <Content>
+          <h1>
+            {undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}
+          </h1>
+          <div>
+            <p>{review}</p>
+          </div>
+        </Content>
+        <ImageBook onClick={redirect}>
+          {defaultImage === false ? (
+            <img
+              src={
+                undefined !== book.volumeInfo.imageLinks ? (
+                  book.volumeInfo.imageLinks.thumbnail
+                ) : (
+                  <span>Carregando</span>
+                )
+              }
+              onError={errorImage}
+            />
+          ) : (
+            <></>
+          )}
+        </ImageBook>
+      </Container>
+    </Page>
   );
 }
 
 const Container = styled.div`
   width: 90%;
-  border-radius: 20px;
   display: flex;
-  border: 1px solid black;
   padding-right: 20px;
   padding-left: 10px;
   padding-top: 20px;
@@ -87,8 +89,8 @@ const Container = styled.div`
 const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
+  width: 20%;
+  margin-left: 5px;
   img {
     width: 180px;
     height: auto;
@@ -98,7 +100,8 @@ const LeftSide = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  width: 70%;
+  margin-left: 20px;
 
   div {
     width: 99%;
@@ -117,5 +120,18 @@ const Content = styled.div`
 
 const ImageBook = styled.div`
   margin-left: 10px;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+`;
+
+const Page = styled.div`
+  margin-right: auto;
+  margin-left: auto;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
