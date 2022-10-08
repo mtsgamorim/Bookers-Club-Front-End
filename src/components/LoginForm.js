@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
 
   const { setToken, setImage, setName } = useContext(UserContext);
 
@@ -14,6 +16,7 @@ export default function LoginForm() {
 
   function login(event) {
     event.preventDefault();
+    setDisableButton(true);
 
     const promise = axios.post("https://bookers-club.herokuapp.com/sign-in", {
       email,
@@ -24,11 +27,13 @@ export default function LoginForm() {
       setToken(res.data.token);
       setImage(res.data.image);
       setName(res.data.name);
+      setDisableButton(false);
 
       navigate("/home");
     });
 
     promise.catch((err) => {
+      setDisableButton(false);
       alert("DADOS INCORRETOS");
     });
   }
@@ -50,9 +55,15 @@ export default function LoginForm() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">
-          <span>Entrar</span>
-        </button>
+        {disableButton ? (
+          <button disabled>
+            <ThreeDots color="#e6d64b" height={80} width={80} />
+          </button>
+        ) : (
+          <button type="submit">
+            <span>Entrar</span>
+          </button>
+        )}
       </form>
     </Container>
   );
@@ -85,6 +96,9 @@ const Container = styled.div`
     border: 0px;
     background-color: #006494;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     :hover {
       opacity: 0.7;

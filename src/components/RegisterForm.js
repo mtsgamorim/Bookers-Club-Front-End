@@ -2,18 +2,20 @@ import axios from "axios";
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
 
   const navigate = useNavigate();
 
   function register(event) {
     event.preventDefault();
-
+    setDisableButton(true);
     const promise = axios.post("https://bookers-club.herokuapp.com/sign-up", {
       email,
       password,
@@ -22,11 +24,13 @@ export default function RegisterForm() {
     });
 
     promise.then((res) => {
+      setDisableButton(false);
       navigate("/");
     });
 
     promise.catch((err) => {
-      alert("E-mail ja cadastrado");
+      setDisableButton(false);
+      alert("E-mail ja cadastrado ou dados inseridos incorretos");
     });
   }
 
@@ -62,9 +66,15 @@ export default function RegisterForm() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">
-          <span>Cadastrar</span>
-        </button>
+        {disableButton ? (
+          <button disabled>
+            <ThreeDots color="#e6d64b" height={80} width={80} />
+          </button>
+        ) : (
+          <button type="submit">
+            <span>Cadastrar</span>
+          </button>
+        )}
       </form>
     </Container>
   );
@@ -97,6 +107,9 @@ const Container = styled.div`
     border: 0px;
     background-color: #006494;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     :hover {
       opacity: 0.7;
