@@ -51,7 +51,7 @@ export default function IndividualBookReviews({
         <h1>{undefined !== book.volumeInfo ? book.volumeInfo.title : <></>}</h1>
         <p>{review}</p>
       </Review>
-      <RightSide>
+      <RightSide onClick={redirect}>
         {defaultImage === false ? (
           <img
             src={
