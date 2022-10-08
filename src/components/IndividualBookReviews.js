@@ -73,6 +73,7 @@ export default function IndividualBookReviews({
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -92,7 +93,7 @@ const LeftSide = styled.div`
 `;
 
 const Review = styled.div`
-  width: 65%;
+  width: 50%;
   word-break: break-word;
   h1 {
     font-size: 30px;
