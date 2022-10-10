@@ -30,3 +30,34 @@ describe("Teste rotas login e cadastro", () => {
     cy.url().should("equal", "http://localhost:3000/home");
   });
 });
+
+describe("Teste cadastrar livro", () => {
+  it("Logar e registrar livro lido", () => {
+    cy.get("[data-cy=bookfinder]").click();
+    cy.get("[data-cy=search]").type("Harry Potter");
+    cy.get("[data-cy=button]").click();
+
+    cy.intercept(
+      "GET",
+      "https://bookers-club.herokuapp.com/book/28m7swEACAAJ"
+    ).as("get");
+    cy.intercept(
+      "GET",
+      "https://www.googleapis.com/books/v1/volumes/28m7swEACAAJ?key=AIzaSyBkIXX90DCfyRT2PMRj-dGqZGcVWY53Rww"
+    ).as("getGoogle");
+    cy.get("[data-cy=book]").eq(0).click();
+    cy.wait("@get");
+    cy.wait("@getGoogle");
+
+    cy.contains("Clique Aqui").click();
+    cy.get("[data-cy=returnHome]").click();
+    cy.get("[data-cy=booksCount]").should("contain", "1");
+  });
+});
+
+describe("Teste visualizar página de reviews", () => {
+  it("Entrar na página", () => {
+    cy.get("[data-cy=review]").click();
+    cy.url().should("equal", "http://localhost:3000/reviews");
+  });
+});

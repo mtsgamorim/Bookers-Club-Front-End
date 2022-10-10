@@ -30,13 +30,14 @@ export default function BookFinderPage() {
         <form onSubmit={findBooks}>
           <div>
             <input
+              data-cy="search"
               placeholder="Nome ou escritor"
               type="text"
               value={search}
               required
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button type="submit">
+            <button data-cy="button" type="submit">
               <AiOutlineSearch size={20} />
             </button>
           </div>

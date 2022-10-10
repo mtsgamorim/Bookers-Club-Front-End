@@ -41,13 +41,13 @@ export default function HomePage() {
         <Profile>
           <img src={image} />
           <span>Nome: {name}</span>
-          <span>Livros lidos: {books.length}</span>
+          <span data-cy="booksCount">Livros lidos: {books.length}</span>
           <h1>Deseja adicionar mais livros?</h1>
-          <button onClick={redirectToBookFinder}>
+          <button data-cy="bookfinder" onClick={redirectToBookFinder}>
             <p>Clique Aqui</p>
           </button>
           <h2>Deseja ver as reviews de livros de outros úsuarios?</h2>
-          <button onClick={redirectToReview}>
+          <button data-cy="review" onClick={redirectToReview}>
             <p>Clique Aqui</p>
           </button>
         </Profile>

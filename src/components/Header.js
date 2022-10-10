@@ -12,7 +12,9 @@ export default function Header() {
   }
   return (
     <Container>
-      <h1 onClick={redirect}>Bookers Club</h1>
+      <h1 data-cy="returnHome" onClick={redirect}>
+        Bookers Club
+      </h1>
       <span>Bem vindo(a), {name}!</span>
     </Container>
   );

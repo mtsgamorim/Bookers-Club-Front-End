@@ -82,7 +82,7 @@ const Container = styled.div`
   border: 1px solid black;
   border-radius: 12px;
   padding: 20px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -93,7 +93,7 @@ const Container = styled.div`
 const LeftSide = styled.div`
   width: 15%;
   word-break: break-word;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@ const LeftSide = styled.div`
 const Review = styled.div`
   width: 50%;
   word-break: break-word;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 100%;
   }
   h1 {
@@ -129,7 +129,7 @@ const RightSide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     display: none;
   }
   img {

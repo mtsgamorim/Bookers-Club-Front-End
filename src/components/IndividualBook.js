@@ -15,7 +15,7 @@ export default function IndividualBook({ id, name, image }) {
   }
 
   return (
-    <Book onClick={() => navigateToBookPage(id)}>
+    <Book data-cy="book" onClick={() => navigateToBookPage(id)}>
       <div>
         <h1>{name}</h1>
       </div>

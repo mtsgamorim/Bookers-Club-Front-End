@@ -56,7 +56,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 100%;
   }
 
