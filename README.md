@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# <p align = "center"> Projeto Bookers Club </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align = "center">
+   <img src="https://img.shields.io/badge/author-Matheus Amorim-4dae71?style=flat-square" />
+   <img src="https://img.shields.io/github/languages/count/mtsgamorim/Bookers-Club-Front-End?color=4dae71&style=flat-square" />
+</p>
 
-## Available Scripts
+## :clipboard: Descrição
 
-In the project directory, you can run:
+Bookers Club é uma aplicação onde cada usúario pode ter um histórico de todos os livros que já leu, encontrar qualquer livro e ler reviews de outros usúarios para poder decidir qual será a sua próxima leitura
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :computer: Tecnologias e Conceitos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Javascript
+- React
+- Styled components
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏁 Rodando a aplicação
 
-### `npm run build`
+O aplicativo já possui deploy, e pode ser visualizado na página: https://bookers-club.vercel.app/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mas caso queira roda-lo localmente, clone este repósitorio com o comando
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```yml
+git clone git@github.com:mtsgamorim/Bookers-Club-Front-End.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Baixe as depêndencias:
 
-### `npm run eject`
+```yml
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Depois basta inicializa-lo que ele aparecerá no seu navegador
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```yml
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para dar uma conferida no back-end dessa aplicação, acesse o repositório: https://github.com/mtsgamorim/Bookers-Club-Back-End
