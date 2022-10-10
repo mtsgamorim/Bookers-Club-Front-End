@@ -47,9 +47,13 @@ export default function IndividualBookHome({ id }) {
             )
           }
           onError={errorImage}
+          alt="book"
         />
       ) : (
-        <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+        <img
+          src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg"
+          alt="book"
+        />
       )}
     </Book>
   );

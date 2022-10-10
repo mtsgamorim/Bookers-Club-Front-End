@@ -13,7 +13,7 @@ export default function RegisterPage() {
   return (
     <Container>
       <Content>
-        <img src={logo} />
+        <img src={logo} alt="logo" />
         <RegisterForm />
         <div onClick={redirect}>
           <p>Já possui conta? Conecte-se!</p>

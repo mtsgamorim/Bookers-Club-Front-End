@@ -23,9 +23,13 @@ export default function IndividualBook({ id, name, image }) {
         <img
           src={undefined !== image ? image.thumbnail : <span>Carregando</span>}
           onError={errorImage}
+          alt="book"
         />
       ) : (
-        <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+        <img
+          src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg"
+          alt="book"
+        />
       )}
     </Book>
   );

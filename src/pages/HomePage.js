@@ -39,7 +39,7 @@ export default function HomePage() {
       <Header />
       <Content>
         <Profile>
-          <img src={image} />
+          <img src={image} alt="user" />
           <span>Nome: {name}</span>
           <span data-cy="booksCount">Livros lidos: {books.length}</span>
           <h1>Deseja adicionar mais livros?</h1>
@@ -177,11 +177,6 @@ const Title = styled.div`
     width: 300px;
     margin-left: 40px;
   }
-`;
-
-const BookArea = styled.div`
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 const RightSide = styled.div`

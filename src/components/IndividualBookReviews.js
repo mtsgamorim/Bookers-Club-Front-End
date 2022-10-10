@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useState, useContext, useEffect } from "react";
-import UserContext from "../context/UserContext";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function IndividualBookReviews({
@@ -11,11 +10,8 @@ export default function IndividualBookReviews({
   bookId,
 }) {
   const [book, setBook] = useState(undefined);
-  const { token } = useContext(UserContext);
   const [defaultImage, setDefaultImage] = useState(false);
   const navigate = useNavigate();
-
-  const config = { headers: { Authorization: `Bearer ${token}` } };
 
   useEffect(() => {
     const promise = axios.get(
@@ -44,7 +40,7 @@ export default function IndividualBookReviews({
   return (
     <Container onClick={redirect}>
       <LeftSide>
-        <img src={userImage} />
+        <img src={userImage} alt="user" />
         <h1>Usúario(a): {userName}</h1>
       </LeftSide>
       <Review>
@@ -62,9 +58,13 @@ export default function IndividualBookReviews({
               )
             }
             onError={errorImage}
+            alt="book"
           />
         ) : (
-          <img src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg" />
+          <img
+            src="https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg"
+            alt="book"
+          />
         )}
       </RightSide>
     </Container>

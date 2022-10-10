@@ -13,7 +13,7 @@ export default function LoginPage() {
   return (
     <Container>
       <Content>
-        <img src={logo} />
+        <img src={logo} alt="logo" />
         <LoginForm />
         <div onClick={redirect}>
           <p>Ainda não possui conta? Cadastre-se</p>
