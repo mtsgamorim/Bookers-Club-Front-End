@@ -41,7 +41,7 @@ export default function RegisterForm() {
           placeholder="Primeiro Nome"
           type="text"
           value={name}
-          maxlength="18"
+          maxLength="18"
           required
           onChange={(e) => setName(e.target.value)}
         />
