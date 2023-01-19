@@ -15,7 +15,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const promise = axios.get(
-      "https://bookers-club.herokuapp.com/book",
+      "https://bookersclubmtsback.onrender.com/book",
       config
     );
     promise.then((res) => {

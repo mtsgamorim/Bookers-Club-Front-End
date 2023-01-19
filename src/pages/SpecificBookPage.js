@@ -27,7 +27,7 @@ export default function SpecificBookPage() {
     });
 
     const promise2 = axios.get(
-      `https://bookers-club.herokuapp.com/book/${id}`,
+      `https://bookersclubmtsback.onrender.com/book/${id}`,
       config
     );
     promise2.then((res) => {
@@ -49,7 +49,7 @@ export default function SpecificBookPage() {
       title: book.volumeInfo.title,
     };
     const promise = axios.post(
-      "https://bookers-club.herokuapp.com/book",
+      "https://bookersclubmtsback.onrender.com/book",
       data,
       config
     );
@@ -64,7 +64,7 @@ export default function SpecificBookPage() {
 
   function deleteBook() {
     const promise = axios.delete(
-      `https://bookers-club.herokuapp.com/book/${idInDb}`,
+      `https://bookersclubmtsback.onrender.com/book/${idInDb}`,
       config
     );
     promise.then((res) => {
@@ -79,7 +79,7 @@ export default function SpecificBookPage() {
     event.preventDefault();
     const data = { review: review };
     const promise = axios.patch(
-      `https://bookers-club.herokuapp.com/book/${idInDb}`,
+      `https://bookersclubmtsback.onrender.com/book/${idInDb}`,
       data,
       config
     );

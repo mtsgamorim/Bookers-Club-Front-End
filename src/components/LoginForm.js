@@ -18,10 +18,13 @@ export default function LoginForm() {
     event.preventDefault();
     setDisableButton(true);
 
-    const promise = axios.post("https://bookers-club.herokuapp.com/sign-in", {
-      email,
-      password,
-    });
+    const promise = axios.post(
+      "https://bookersclubmtsback.onrender.com/sign-in",
+      {
+        email,
+        password,
+      }
+    );
 
     promise.then((res) => {
       setToken(res.data.token);

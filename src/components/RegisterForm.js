@@ -16,12 +16,15 @@ export default function RegisterForm() {
   function register(event) {
     event.preventDefault();
     setDisableButton(true);
-    const promise = axios.post("https://bookers-club.herokuapp.com/sign-up", {
-      email,
-      password,
-      name,
-      image,
-    });
+    const promise = axios.post(
+      "https://bookersclubmtsback.onrender.com/sign-up",
+      {
+        email,
+        password,
+        name,
+        image,
+      }
+    );
 
     promise.then((res) => {
       setDisableButton(false);

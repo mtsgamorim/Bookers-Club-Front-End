@@ -13,7 +13,7 @@ export default function ReviewsPage() {
 
   useEffect(() => {
     const promise = axios.get(
-      "https://bookers-club.herokuapp.com/reviews",
+      "https://bookersclubmtsback.onrender.com/reviews",
       config
     );
     promise.then((res) => {
